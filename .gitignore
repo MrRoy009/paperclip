@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+credentials*
+build/
+.venv/
+data/
+models/
+*.onnx
+*.pt
+*.pkl
+*.log

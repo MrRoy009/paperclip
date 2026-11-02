@@ -1,0 +1,7 @@
+file(GLOB_RECURSE headers "${ROOT}/include/fnq/*.hpp")
+foreach(header IN LISTS headers)
+ file(READ "${header}" content)
+ if(content MATCHES "(^|[^A-Za-z0-9_])(float|double)([^A-Za-z0-9_]|$)")
+  message(FATAL_ERROR "Forbidden numeric type in ${header}")
+ endif()
+endforeach()

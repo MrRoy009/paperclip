@@ -1,4 +1,4 @@
-# Exploratory MNQ bar study — October 2026 sample
+# Exploratory MNQ bar study â€” October 2026 sample
 
 **Result: zero trades.** The strategy generated 32 eligible breakout signals,
 but every one failed the frozen position-sizing rule. This is a completed
@@ -14,7 +14,7 @@ parameters were not changed after seeing these results.
 | Adverse fill assumption | Signals rejected by sizing | Trades | Net P&L |
 |---|---:|---:|---:|
 | 1 tick per side | 32 | 0 | $0 (no exposure) |
-| 2 ticks per side — base case | 32 | 0 | $0 (no exposure) |
+| 2 ticks per side â€” base case | 32 | 0 | $0 (no exposure) |
 | 4 ticks per side | 32 | 0 | $0 (no exposure) |
 
 Win rate and profit factor are undefined. Zero drawdown reflects no exposure;
@@ -24,7 +24,7 @@ sensitivity when no orders were filled. The flat B0 baseline also earns zero.
 ## Data and coverage
 - Freely downloaded MNQ 10-second trade OHLCV sample: 166,756 rows.
 - 46,800 rows fall within 20 complete synthetic regular-day sessions, October
-  1–28. October 29 and 30 regular sessions are absent from the sample. Across
+  1â€“28. October 29 and 30 regular sessions are absent from the sample. Across
   all 22 expected weekdays, 4,680 ten-second buckets / 52 fifteen-minute bars
   are missing. All 20 observed regular sessions contain every expected bucket.
 - Source file spans 2026-10-01 00:00 UTC through 2026-10-29 03:12:50 UTC.

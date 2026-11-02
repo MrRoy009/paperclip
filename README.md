@@ -106,3 +106,11 @@ ASAN_OPTIONS=detect_leaks=0 UBSAN_OPTIONS=halt_on_error=1 \
 Leak detection is disabled for this managed ptrace environment: LeakSanitizer
 exits with its unsupported-ptrace error. ASan and UBSan remain enabled. On a
 host supporting LeakSanitizer, enable leak detection separately.
+
+### Accepted strategy review
+
+See `reports/mnq15-acceptance.md` for independent audit and final operator checks.
+An `OVERFLOW` result is terminal for that session: stop and report the invalid run;
+retrying the same decision cannot repair its inputs. Leak checking and native
+Windows validation remain unverified. The calendar still supports only the two
+documented synthetic fixture dates.

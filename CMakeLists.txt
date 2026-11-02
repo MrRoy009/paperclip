@@ -34,3 +34,11 @@ endforeach()
 
 # Independent-QA regression: no backward fill time; same-event partials remain valid.
 add_test(NAME R01_fill_event_monotonic COMMAND test_ledger 31)
+
+add_library(fnq_strategy STATIC src/bars.cpp src/features.cpp src/orders.cpp src/strategy.cpp)
+target_link_libraries(fnq_strategy PUBLIC fnq_core)
+add_executable(test_strategy tests/strategy.cpp)
+target_link_libraries(test_strategy PRIVATE fnq_strategy)
+foreach(number RANGE 1 31)
+ add_test(NAME S${number}_strategy COMMAND test_strategy ${number})
+endforeach()

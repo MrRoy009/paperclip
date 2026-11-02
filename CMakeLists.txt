@@ -31,3 +31,6 @@ foreach(row IN LISTS cases)
   add_test(NAME ${name} COMMAND test_sizing ${number})
  endif()
 endforeach()
+
+# Independent-QA regression: no backward fill time; same-event partials remain valid.
+add_test(NAME R01_fill_event_monotonic COMMAND test_ledger 31)

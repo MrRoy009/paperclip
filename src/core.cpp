@@ -64,6 +64,7 @@ Error Ledger::fill(Side side,Contracts qty,Ticks price,std::uint64_t decision,st
  if(position>cap_ || position< -static_cast<std::int64_t>(cap_)) return Error::CAP_EXCEEDED;
  if(!stream.contains(seq)) return Error::INVALID_EVENT;
  if(seq<=decision) return Error::SAME_OR_PAST_EVENT;
+ if(state_.last_fill_seq && seq<*state_.last_fill_seq) return Error::FILL_EVENT_REGRESSION;
  State next=state_;
  Contracts remaining=qty;
  while(remaining>0 && !next.lots.empty() && next.lots.front().side!=side) {

@@ -40,6 +40,21 @@ int main(int argc,char** argv) { if(argc!=2) return 1; return run([&]{
  rejected(f,Side::SELL,1,0,1,2,Error::NON_POSITIVE_PRICE); rejected(f,Side::SELL,1,-1,1,2,Error::NON_POSITIVE_PRICE);
  Fixture fees(MES,hi); CHECK(fees.fill(Side::BUY,1,100)==Error::NONE); rejected(fees,Side::SELL,2,100,1,2,Error::OVERFLOW);
  break;}
+ case 31: {
+ Fixture f(MES,50,3);
+ CHECK(f.ledger.fill(Side::BUY,1,100,4,5,f.stream)==Error::NONE);
+ rejected(f,Side::BUY,1,100,2,3,Error::FILL_EVENT_REGRESSION);
+ CHECK(f.state().last_fill_seq==5);
+ // Same-event partials are legitimate; order decisions can predate other fills.
+ CHECK(f.ledger.fill(Side::BUY,1,100,4,5,f.stream)==Error::NONE);
+ CHECK(f.state().position==2 && f.state().fees==100 && f.state().last_fill_seq==5);
+ CHECK(f.ledger.fill(Side::SELL,1,105,0,6,f.stream)==Error::NONE);
+ CHECK(f.state().position==1 && f.state().gross==625 && f.state().fees==150 && f.state().net==475 && f.state().last_fill_seq==6);
+ Fixture high(MES,0,3);
+ CHECK(high.ledger.fill(Side::BUY,1,100,8,9,high.stream)==Error::NONE);
+ rejected(high,Side::BUY,1,100,0,1,Error::FILL_EVENT_REGRESSION);
+ break;
+ }
  default: CHECK(false);
  }
  }); }

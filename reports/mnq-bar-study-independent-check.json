@@ -1,0 +1,174 @@
+{
+  "status": "PASS",
+  "independent_method": "pandas resampling and shifted rolling windows, separate from study engine",
+  "complete_regular_day_sessions": 20,
+  "first_session": "2026-10-01",
+  "last_session": "2026-10-28",
+  "exact_signal_time_distance_risk_matches": 32,
+  "minimum_risk_cents": 10600,
+  "min_stop_ticks": 200,
+  "max_stop_ticks": 903,
+  "affordable_signals": 0,
+  "signal_details": [
+    {
+      "timestamp_ns": 1790875800000000000,
+      "distance_ticks": 708,
+      "risk_cents": 36000
+    },
+    {
+      "timestamp_ns": 1790876700000000000,
+      "distance_ticks": 683,
+      "risk_cents": 34750
+    },
+    {
+      "timestamp_ns": 1791218700000000000,
+      "distance_ticks": 309,
+      "risk_cents": 16050
+    },
+    {
+      "timestamp_ns": 1791221400000000000,
+      "distance_ticks": 256,
+      "risk_cents": 13400
+    },
+    {
+      "timestamp_ns": 1791222300000000000,
+      "distance_ticks": 266,
+      "risk_cents": 13900
+    },
+    {
+      "timestamp_ns": 1791306900000000000,
+      "distance_ticks": 253,
+      "risk_cents": 13250
+    },
+    {
+      "timestamp_ns": 1791387900000000000,
+      "distance_ticks": 548,
+      "risk_cents": 28000
+    },
+    {
+      "timestamp_ns": 1791478800000000000,
+      "distance_ticks": 666,
+      "risk_cents": 33900
+    },
+    {
+      "timestamp_ns": 1791480600000000000,
+      "distance_ticks": 903,
+      "risk_cents": 45750
+    },
+    {
+      "timestamp_ns": 1791831600000000000,
+      "distance_ticks": 200,
+      "risk_cents": 10600
+    },
+    {
+      "timestamp_ns": 1791992700000000000,
+      "distance_ticks": 789,
+      "risk_cents": 40050
+    },
+    {
+      "timestamp_ns": 1791994500000000000,
+      "distance_ticks": 674,
+      "risk_cents": 34300
+    },
+    {
+      "timestamp_ns": 1791995400000000000,
+      "distance_ticks": 646,
+      "risk_cents": 32900
+    },
+    {
+      "timestamp_ns": 1791999000000000000,
+      "distance_ticks": 599,
+      "risk_cents": 30550
+    },
+    {
+      "timestamp_ns": 1792000800000000000,
+      "distance_ticks": 569,
+      "risk_cents": 29050
+    },
+    {
+      "timestamp_ns": 1792086300000000000,
+      "distance_ticks": 550,
+      "risk_cents": 28100
+    },
+    {
+      "timestamp_ns": 1792170900000000000,
+      "distance_ticks": 643,
+      "risk_cents": 32750
+    },
+    {
+      "timestamp_ns": 1792177200000000000,
+      "distance_ticks": 709,
+      "risk_cents": 36050
+    },
+    {
+      "timestamp_ns": 1792429200000000000,
+      "distance_ticks": 508,
+      "risk_cents": 26000
+    },
+    {
+      "timestamp_ns": 1792521900000000000,
+      "distance_ticks": 385,
+      "risk_cents": 19850
+    },
+    {
+      "timestamp_ns": 1792597500000000000,
+      "distance_ticks": 701,
+      "risk_cents": 35650
+    },
+    {
+      "timestamp_ns": 1792601100000000000,
+      "distance_ticks": 489,
+      "risk_cents": 25050
+    },
+    {
+      "timestamp_ns": 1792609200000000000,
+      "distance_ticks": 342,
+      "risk_cents": 17700
+    },
+    {
+      "timestamp_ns": 1792687500000000000,
+      "distance_ticks": 697,
+      "risk_cents": 35450
+    },
+    {
+      "timestamp_ns": 1792695600000000000,
+      "distance_ticks": 520,
+      "risk_cents": 26600
+    },
+    {
+      "timestamp_ns": 1792774800000000000,
+      "distance_ticks": 564,
+      "risk_cents": 28800
+    },
+    {
+      "timestamp_ns": 1792775700000000000,
+      "distance_ticks": 552,
+      "risk_cents": 28200
+    },
+    {
+      "timestamp_ns": 1793115900000000000,
+      "distance_ticks": 648,
+      "risk_cents": 33000
+    },
+    {
+      "timestamp_ns": 1793116800000000000,
+      "distance_ticks": 537,
+      "risk_cents": 27450
+    },
+    {
+      "timestamp_ns": 1793206800000000000,
+      "distance_ticks": 330,
+      "risk_cents": 17100
+    },
+    {
+      "timestamp_ns": 1793208600000000000,
+      "distance_ticks": 332,
+      "risk_cents": 17200
+    },
+    {
+      "timestamp_ns": 1793213100000000000,
+      "distance_ticks": 666,
+      "risk_cents": 33900
+    }
+  ]
+}

@@ -114,3 +114,12 @@ An `OVERFLOW` result is terminal for that session: stop and report the invalid r
 retrying the same decision cannot repair its inputs. Leak checking and native
 Windows validation remain unverified. The calendar still supports only the two
 documented synthetic fixture dates.
+
+### Offline quote replay milestone
+
+See `docs/REPLAY.md` for exact schema, CLI, pinned timezone handling and limits.
+The new runner explicitly accepts caller-supplied UTC sessions; the original
+two-date fixture remains the default. `examples/replay/` contains invented quotes
+for a reproducible software check, never historical results. Replay capacity is
+currently capped at 25,000 quotes/run, with synthetic regular-day session hours.
+Actual historical replay remains blocked on suitable free MNQ event-BBO data.

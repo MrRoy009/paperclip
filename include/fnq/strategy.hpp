@@ -10,7 +10,8 @@ Result<Session> session_2026(std::string_view date);
 struct Bar { std::int64_t label{},open{},high{},low{},close{},tr{}; bool present{},spans_halt{}; };
 struct Features { Ticks high,low,distance; };
 Result<Features> features(const std::vector<Bar>&);
-struct Record { std::int64_t time; std::uint64_t seq; std::string reason; Ticks price{},distance{}; };
+enum class CalendarScope { PINNED_FIXTURE, EXPLICIT_UTC };
+struct Record { std::int64_t time; std::uint64_t seq; std::string reason; Ticks price{},distance{}; Contracts position{}; };
 struct Order { Side side; bool entry; std::int64_t time,deadline; std::uint64_t seq; std::string reason; Ticks distance; };
 class Strategy {
  Session session_;
@@ -32,7 +33,7 @@ class Strategy {
  Error decision(std::int64_t);
  Error execute(const Event&);
 public:
- explicit Strategy(Session);
+ explicit Strategy(Session, CalendarScope scope=CalendarScope::PINNED_FIXTURE);
  Error quote(Event); // transactional: all errors leave every field unchanged
  Error advance_time(std::int64_t);
  const auto& bars() const { return bars_; }

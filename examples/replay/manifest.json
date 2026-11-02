@@ -1,0 +1,12 @@
+{
+  "kind": "synthetic",
+  "contract": "MNQZ24",
+  "source": "GENERATED software fixture; these quotes are invented, not historical market data",
+  "timestamp_basis": "UTC_UNIX_NS",
+  "quote_coverage": "event_bbo",
+  "adjustment": "unadjusted",
+  "calendar_policy": "synthetic_regular_hours",
+  "sessions": [
+    "2024-11-05"
+  ]
+}

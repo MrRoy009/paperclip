@@ -1,6 +1,6 @@
 #include "fnq/strategy.hpp"
 namespace fnq {
-void Strategy::record(std::int64_t t,std::string r,Ticks p,Ticks d) { log_.push_back({t,stream_.events().empty()?0:stream_.events().back().seq,std::move(r),p,d}); }
+void Strategy::record(std::int64_t t,std::string r,Ticks p,Ticks d) { log_.push_back({t,stream_.events().empty()?0:stream_.events().back().seq,std::move(r),p,d,state().position}); }
 Error Strategy::decision(std::int64_t t) {
  Bar b=forming_.value_or(Bar{}); b.label=t;
  for(auto h:session_.halts) if(h.begin<t && h.end>t-quarter) b.spans_halt=true;

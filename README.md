@@ -1,30 +1,46 @@
-# FundedNext offline development
+# Offline futures core — milestone 1
 
-Scope: research, C++20 development, independent testing, and simulated execution only.
+A C++20 library for deterministic synthetic trade calculations. It provides MES/MNQ
+tick arithmetic, exact price/quantity parsing, cost-inclusive sizing, ordered market
+events, FIFO position accounting, and atomic rejection of invalid fills.
 
-No trading credentials or live execution are authorized.
+This milestone is a library and test suite. It contains no entry strategy, trained model,
+market-data connection, trading terminal bridge, account credentials, or order transmitter.
 
-## Team
+## Build and test in Ubuntu / WSL2
 
-1. Quant / ML Research Lead: Claude Code with the owner's Claude Pro subscription.
-2. C++ Engineer: Codex with the owner's ChatGPT Plus subscription.
-3. QA / Risk Auditor: Claude Code with the same owner's Claude Pro allowance.
+Prerequisites: CMake 3.20+, a C++20 compiler, and standard build tools. No third-party
+library download, API key, market data, or network access is needed for the build.
 
-Run one task at a time, manually. Subscription allowances are shared, not multiplied by agent count. No API fallback or paid overage.
+```bash
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
+cmake --build build -j2
+ctest --test-dir build --output-on-failure
+```
 
-## First tasks
+The suite contains 30 milestone acceptance tests and the independent-QA regression
+`R01_fill_event_monotonic`. All must pass. CTest timing output is not deterministic;
+calculated values and pass/fail results are.
 
-- Quant: write docs/research-plan.md covering a non-ML baseline, causal features, chronological validation, leakage checks, costs/slippage, and unresolved requirements.
-- Engineer: after specification approval, implement a CMake/CTest C++20 skeleton with synthetic events, configurable risk checks, and in-memory simulated execution. Test stale data, duplicate events, invalid prices, position limits, and a latched kill switch.
-- QA: independently review the exact engineer commit, produce reports/initial-audit.md, and mark findings pass, fail, or unverified. Do not change audited implementation.
+## Key contracts
 
-## Review report
+- MES: 4 ticks per index point, 125 cents per tick. MNQ: 4 ticks per point, 50 cents per tick.
+- Order quantity is side BUY/SELL plus a positive integer number of contracts.
+- Sizing reserves stop risk, both fee sides and configured round-trip slippage. It rounds down;
+  an unaffordable contract produces zero size. This is a scenario allowance, not a guarantee.
+- Filled prices are supplied positive integer ticks. Quote matching/slippage is a later layer.
+- A fill must reference an admitted event after its own decision boundary. Fill-event sequence
+  cannot regress across ledger calls. Same-event partial fills remain valid.
+- Older pending orders may fill later. TTL, order IDs, execution deduplication and cancellation
+  belong to a later order-management layer and are not claimed here.
+- FIFO realised P&L and per-side fees are exact integer cents. Arithmetic errors leave state unchanged.
 
-Task:
-Commit/files reviewed:
-Changes:
-Tests and results:
-Assumptions:
-Unverified items:
-Permission blockers:
-Next proposed task:
+Public API: `include/fnq/core.hpp`. Implementation: `src/core.cpp`. Tests: `tests/`.
+The accepted scope and exact examples are in `docs/engineer-milestone-1.md`; the temporal
+repair is documented in `docs/qa-repair-notes.md`.
+
+## Validation limits
+
+The build is verified on Ubuntu/WSL2 with GCC. A native Windows/MSVC build has not been
+verified. Synthetic arithmetic and software tests establish no strategy edge, account-rule
+compliance, or real trading performance. Fees and position caps used in tests are synthetic.

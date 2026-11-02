@@ -104,3 +104,10 @@ accepted historical-performance study. All generated fixtures use
 No purchases, paid API fallback, new provider accounts or trading connections
 were made. No suitable verified freely downloadable MNQ event-BBO history was
 found in this bounded investigation; this does not claim that none exists.
+
+## Read-only online download check
+
+`python3 tools/online_history.py --month 2026-10 --out results/new-sample`
+downloads a public free MNQ bar sample and records transfer/hash checks. It
+explicitly reports incompatibility with event-BBO replay and never runs trades.
+See reports/online-history-check.md. Agent network permissions are unchanged.

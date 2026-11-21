@@ -12,3 +12,25 @@ models/
 *.pt
 *.pkl
 *.log
+
+# Local build outputs and Python caches
+build-*/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Private runtime state and credentials
+.paperclip/
+.codex/
+.claude/
+*.sqlite*
+*.db
+*.p12
+*.pfx
+*.secrets.*
+setup-state.json
+*-state.json
+qa-workspace.json
+quant-repair-result.json
+accounting-repair/
+package-check-*/
